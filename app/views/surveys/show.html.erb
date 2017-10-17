@@ -19,7 +19,7 @@
 <%= form_with(model: [ @survey, @survey.questions.build], local: true) do |form| %>
 
     <div class="field">
-      <%= form.label :title %>
+      <%= form.label 'Add Question' %>
       <%= form.text_field :title, id: :comment_title %>
 
     </div>
