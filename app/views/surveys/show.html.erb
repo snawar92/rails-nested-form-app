@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @survey.name %>
+</p>
+
+<% @survey.questions.each do |a| %>
+    <p>
+      <strong>Question:</strong>
+      <%= a.title %>
+      <%= link_to 'remove', survey_question_path(a),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' }, local: true, style: 'padding-left: 15px;' %>
+    </p>
+
+<% end %>
+
+<%= form_with(model: [ @survey, @survey.questions.build], local: true) do |form| %>
+
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title, id: :comment_title %>
+
+    </div>
+    <div class="actions">
+      <%= form.submit style: 'display:none' %>
+    </div>
+<% end %>
+
+<%= link_to 'Edit', edit_survey_path(@survey) %> |
+<%= link_to 'Back', surveys_path %>
